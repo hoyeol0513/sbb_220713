@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/usr/article")
@@ -52,5 +53,15 @@ public class ArticleController {
     }
 
     //d
-
+    @RequestMapping("doDelete")
+    @ResponseBody
+    public String doDelete(Long id){
+        /* Article article = articleRepository.findById(id).get(); //optional이 아니면 에러 */
+        Optional<Article> article = articleRepository.findById(id);
+        if(!articleRepository.existsById(id)){
+            return "%d번 게시물은 이미 삭제되었거나 없는 게시물입니다.".formatted(id);
+        }
+        articleRepository.deleteById(id);
+        return "%d번 게시물이 삭제되었습니다.".formatted(id);
+    }
 }
