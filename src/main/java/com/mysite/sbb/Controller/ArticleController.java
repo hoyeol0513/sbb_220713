@@ -26,6 +26,9 @@ public class ArticleController {
         if(body == null || body.trim().length() == 0){
             return "내용을 입력해주세요.";
         }
+        title = title.trim();
+        body = body.trim();
+
         Article article = new Article();
         article.setTitle(title);
         article.setBody(body);
