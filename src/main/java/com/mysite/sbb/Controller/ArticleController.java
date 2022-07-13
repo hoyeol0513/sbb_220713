@@ -39,8 +39,27 @@ public class ArticleController {
     //r(read)
     @RequestMapping("list")
     @ResponseBody
-    //전체조회
-    public List<Article> showList(){
+    //전체조회 (제목, 내용으로 조회 추가)
+    public List<Article> showList(String title, String body){
+        if(title != null && body == null){ //findByTitle
+            if(!articleRepository.existByTitle(title)){
+                System.out.println("검색한 제목과 일치하는 게시물이 없습니다");
+                return null;
+            }
+            return articleRepository.findByTitle(title);
+        }else if(title == null && body != null){ //findByBody
+            if(!articleRepository.existByBody(body)){
+                System.out.println("검색한 내용과 일치하는 게시물이 없습니다.");
+                return null;
+            }
+            return articleRepository.findByBody(body);
+        }else if(title != null && body != null){
+            if(!articleRepository.existByTitleAndBody(title, body)){
+                System.out.println("검색한 제목과 내용 모두 일치하는 게시물이 없습니다.");
+                return null;
+            }
+            return articleRepository.findByTitleAndBody(title, body);
+        }
         return articleRepository.findAll();
     }
 
@@ -82,15 +101,5 @@ public class ArticleController {
         }
         articleRepository.deleteById(id);
         return "%d번 게시물이 삭제되었습니다.".formatted(id);
-    }
-
-    @RequestMapping("findByTitle")
-    @ResponseBody
-    public List<Article> findByTitle(String title){
-        if(title == null || title.trim().length() == 0){
-            System.out.println("검색할 제목을 입력하세요.");
-        }
-        List<Article> articles = articleRepository.findByTitle(title);
-        return articles;
     }
 }
