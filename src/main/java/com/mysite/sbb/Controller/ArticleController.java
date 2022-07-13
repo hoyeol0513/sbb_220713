@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/usr/article")
@@ -17,6 +16,14 @@ public class ArticleController {
     @Autowired
     private ArticleRepository articleRepository;
     //c
+    @RequestMapping("doWrite")
+    @ResponseBody
+    public String doWrite(String title, String body){
+        if(title == null || title.trim().length() == 0){
+            return "제목을 입력해주세요.";
+        }
+        return "게시물을 작성했습니다.";
+    }
 
     //r(read)
     @RequestMapping("list")
@@ -38,13 +45,16 @@ public class ArticleController {
     @RequestMapping("doModify")
     @ResponseBody
     public String doModify(Long id, String title, String body){
-        Article article = articleRepository.findById(id).get();
-        if(title == null){
+        if(!articleRepository.existsById(id)){
+            return "%d번 게시물은 삭제되었거나 없는 게시물입니다.".formatted(id);
+        }
+        if(title == null || title.trim().length() == 0){
             return "제목을 입력해주세요.";
         }
-        if(body == null){
+        if(body == null || body.trim().length() == 0){
             return "내용을 입력해주세요.";
         }
+        Article article = articleRepository.findById(id).get();
         article.setTitle(title);
         article.setBody(body);
         article.setUpdateDate(LocalDateTime.now());
@@ -56,8 +66,6 @@ public class ArticleController {
     @RequestMapping("doDelete")
     @ResponseBody
     public String doDelete(Long id){
-        /* Article article = articleRepository.findById(id).get(); //optional이 아니면 에러 */
-        Optional<Article> article = articleRepository.findById(id);
         if(!articleRepository.existsById(id)){
             return "%d번 게시물은 이미 삭제되었거나 없는 게시물입니다.".formatted(id);
         }
