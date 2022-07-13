@@ -7,9 +7,9 @@ import java.util.List;
 
 public interface ArticleRepository extends JpaRepository<Article, Long> {
     List<Article> findByTitle(String title);
-    boolean existByTitle(String title);
+    boolean existsByTitle(String title);
     List<Article> findByBody(String body);
-    boolean existByBody(String body);
+    boolean existsByBody(String body);
     List<Article> findByTitleAndBody(String title, String body);
-    boolean existByTitleAndBody(String title, String body);
+    boolean existsByTitleAndBody(String title, String body);
 }

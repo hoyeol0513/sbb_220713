@@ -42,19 +42,19 @@ public class ArticleController {
     //전체조회 (제목, 내용으로 조회 추가)
     public List<Article> showList(String title, String body){
         if(title != null && body == null){ //findByTitle
-            if(!articleRepository.existByTitle(title)){
+            if(!articleRepository.existsByTitle(title)){
                 System.out.println("검색한 제목과 일치하는 게시물이 없습니다");
                 return null;
             }
             return articleRepository.findByTitle(title);
         }else if(title == null && body != null){ //findByBody
-            if(!articleRepository.existByBody(body)){
+            if(!articleRepository.existsByBody(body)){
                 System.out.println("검색한 내용과 일치하는 게시물이 없습니다.");
                 return null;
             }
             return articleRepository.findByBody(body);
         }else if(title != null && body != null){
-            if(!articleRepository.existByTitleAndBody(title, body)){
+            if(!articleRepository.existsByTitleAndBody(title, body)){
                 System.out.println("검색한 제목과 내용 모두 일치하는 게시물이 없습니다.");
                 return null;
             }
