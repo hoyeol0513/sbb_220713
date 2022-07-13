@@ -22,7 +22,18 @@ public class ArticleController {
         if(title == null || title.trim().length() == 0){
             return "제목을 입력해주세요.";
         }
-        return "게시물을 작성했습니다.";
+
+        if(body == null || body.trim().length() == 0){
+            return "내용을 입력해주세요.";
+        }
+        Article article = new Article();
+        article.setTitle(title);
+        article.setBody(body);
+        article.setUpdateDate(LocalDateTime.now());
+        article.setRegDate(LocalDateTime.now());
+        article.setUserId(1L);
+        articleRepository.save(article);
+        return "%d게시물을 작성했습니다.".formatted(article.getId());
     }
 
     //r(read)
