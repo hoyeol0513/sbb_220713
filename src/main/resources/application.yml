@@ -12,9 +12,9 @@ spring:
     url: jdbc:mysql://localhost:3306/sbb?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=Asia/Seoul&useOldAliasMetadataBehavior=true&zeroDateTimeNehavior=convertToNull
     username: hoyeol
     password: rkdghduf12!
-  jpa:
-    hibernate:
-      ddl-auto: create
+  #jpa:
+    #hibernate:
+      #ddl-auto: create
       #없애거나 update로 바꾸기(아니면 계속 없어짐)
     properties:
       hibernate:
