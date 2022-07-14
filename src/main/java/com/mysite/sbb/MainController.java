@@ -5,11 +5,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping("/test")
 public class MainController {
-    @RequestMapping("")
+    //시작 메인컨트롤러를 questionlist로 적용
+    @RequestMapping("/")
+    public String root(){
+        return "redirect:/question/list";
+    }
+
+    @RequestMapping("/sbbTest")
     @ResponseBody
     public String test(){
-        return "하이";
+        return "test : 하이";
     }
 }
