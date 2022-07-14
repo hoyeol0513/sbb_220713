@@ -13,6 +13,9 @@ spring:
     username: hoyeol
     password: rkdghduf12!
   jpa:
+    hibernate:
+      ddl-auto: create
+      #없애거나 update로 바꾸기(아니면 계속 없어짐)
     properties:
       hibernate:
         show_sql: true
@@ -26,5 +29,3 @@ spring:
           type:
             descriptor:
               sql: trace
-  #    hibernate:
-  #      ddl-auto: update
