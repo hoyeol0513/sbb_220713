@@ -1,8 +1,6 @@
-package com.mysite.sbb.service;
+package com.mysite.sbb.Question;
 
-import com.mysite.sbb.Repository.QuestionRepository;
 import com.mysite.sbb.Util.DataNotFoundException;
-import com.mysite.sbb.vo.Question;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

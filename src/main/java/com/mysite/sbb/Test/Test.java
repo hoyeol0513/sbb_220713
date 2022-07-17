@@ -1,4 +1,4 @@
-package com.mysite.sbb.vo;
+package com.mysite.sbb.Test;
 
 import lombok.Getter;
 import lombok.Setter;

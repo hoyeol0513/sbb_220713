@@ -1,7 +1,8 @@
-package com.mysite.sbb.vo;
+package com.mysite.sbb.Question;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.mysite.sbb.Answer.Answer;
 import lombok.Getter;
 import lombok.Setter;
 

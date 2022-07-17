@@ -1,7 +1,5 @@
-package com.mysite.sbb.Controller;
+package com.mysite.sbb.Question;
 
-import com.mysite.sbb.service.QuestionService;
-import com.mysite.sbb.vo.Question;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

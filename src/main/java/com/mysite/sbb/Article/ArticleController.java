@@ -1,7 +1,5 @@
-package com.mysite.sbb.Controller;
+package com.mysite.sbb.Article;
 
-import com.mysite.sbb.Repository.ArticleRepository;
-import com.mysite.sbb.vo.Article;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +12,7 @@ import java.util.List;
 @RequestMapping("/usr/article")
 public class ArticleController {
     @Autowired
-    private ArticleRepository articleRepository;
+    private Article.ArticleRepository articleRepository;
     //c
     @RequestMapping("doWrite")
     @ResponseBody

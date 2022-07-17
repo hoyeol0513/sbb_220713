@@ -1,6 +1,6 @@
-package com.mysite.sbb.Repository;
+package com.mysite.sbb.Question;
 
-import com.mysite.sbb.vo.Question;
+import com.mysite.sbb.Question.Question;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface QuestionRepository extends JpaRepository<Question, Integer> {

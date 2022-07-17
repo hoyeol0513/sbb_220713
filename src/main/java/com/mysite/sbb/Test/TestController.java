@@ -1,7 +1,5 @@
-package com.mysite.sbb.Controller;
+package com.mysite.sbb.Test;
 
-import com.mysite.sbb.Repository.TestRepository;
-import com.mysite.sbb.vo.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
