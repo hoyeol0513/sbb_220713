@@ -12,7 +12,7 @@ import java.util.List;
 @RequestMapping("/usr/article")
 public class ArticleController {
     @Autowired
-    private Article.ArticleRepository articleRepository;
+    private ArticleRepository articleRepository;
     //c
     @RequestMapping("doWrite")
     @ResponseBody
@@ -64,7 +64,7 @@ public class ArticleController {
         return articleRepository.findAll();
     }
 
-    @RequestMapping("detail")
+    @RequestMapping("detail/")
     @ResponseBody
     //단건조회
     public Article showDetail(Long id){
