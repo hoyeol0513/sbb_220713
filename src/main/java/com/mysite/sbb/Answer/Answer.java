@@ -26,4 +26,19 @@ public class Answer {
 
     @ManyToOne
     private Question question;
+
+    private Boolean replyLike;
+
+}
+//sql에서 true/false를 제대로 인식하지 못해서 converter로 y,n로 바꿈
+@Converter
+class BooleanToYNConverter implements AttributeConverter<Boolean, String>{
+    @Override
+    public String convertToDatabaseColumn(Boolean attribute){
+        return (attribute != null && attribute) ? "Y" : "N";
+    }
+    @Override
+    public Boolean convertToEntityAttribute(String dbData){
+        return "Y".equals(dbData);
+    }
 }

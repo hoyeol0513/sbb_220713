@@ -26,4 +26,10 @@ public class AnswerController {
         this.answerService.create(question, content);
         return String.format("redirect:/question/detail/%s", id);
     }
+
+    @PostMapping("/like/{questionId}/{answerId}")
+    public String clickLike (@PathVariable("questionId") Integer questionId, @PathVariable("answerId") Integer answerId){
+        this.answerService.setLike(answerId); //answerService에 저장
+        return String.format("redirect:/question/detail/%s", questionId); //setLike 후에 다시 해당 질문 페이지로
+    }
 }
