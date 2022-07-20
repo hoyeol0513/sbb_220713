@@ -1,15 +1,17 @@
 package com.mysite.sbb.Answer;
 
-import com.mysite.sbb.Question.QuestionService;
 import com.mysite.sbb.Question.Question;
+import com.mysite.sbb.Question.QuestionService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/answer")
@@ -20,10 +22,15 @@ public class AnswerController {
     private final AnswerService answerService;
 
     @PostMapping("/create/{id}")
-    public String createAnswer(Model model, @PathVariable("id") Integer id, @RequestParam String content){
+    public String createAnswer(Model model, @PathVariable("id") Integer id, @Valid AnswerForm answerForm, BindingResult bindingResult){
         Question question = this.questionService.getQuestion(id); //해당 질문에 대한 답변이 필요
-        //질문만들기
-        this.answerService.create(question, content);
+        //답변 검증
+        if(bindingResult.hasErrors()) {//에러가 있으면 질문상세페이지로(답변 다시달기)
+            model.addAttribute("question", question);
+            return "question_detail";
+        }
+        //해당 질문에 답변만들기
+        this.answerService.create(question, answerForm.getContent());
         return String.format("redirect:/question/detail/%s", id);
     }
 
