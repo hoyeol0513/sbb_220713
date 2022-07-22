@@ -1,6 +1,9 @@
-package com.mysite.sbb.Question;
+package com.mysite.sbb.Question.controller;
 
 import com.mysite.sbb.Answer.AnswerForm;
+import com.mysite.sbb.Question.QuestionForm;
+import com.mysite.sbb.Question.domain.Question;
+import com.mysite.sbb.Question.service.QuestionService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

@@ -1,5 +1,7 @@
-package com.mysite.sbb.Question;
+package com.mysite.sbb.Question.service;
 
+import com.mysite.sbb.Question.domain.Question;
+import com.mysite.sbb.Question.dao.QuestionRepository;
 import com.mysite.sbb.Util.DataNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
